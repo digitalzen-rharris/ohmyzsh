@@ -1,6 +1,6 @@
 ---
 hosts: all
-- name: Install oh-my-zsh
+ - name: Install oh-my-zsh
     shell: sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
     become: yes
     become_user: neko
