@@ -1,20 +1,20 @@
 ---
-hosts: all
- - name: Install oh-my-zsh
-    shell: sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
-    become: yes
-    become_user: neko
-    args:
-      creates: /home/neko/.oh-my-zsh/README.md
+  hosts: all
+   - name: Install oh-my-zsh
+     shell: sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+      become: yes
+      become_user: neko
+      args:
+        creates: /home/neko/.oh-my-zsh/README.md
 
-- name: Clone a repo with separate git directory
-  ansible.builtin.git:
-    repo: https://github.com/romkatv/powerlevel10k.git 
-    dest: /home/neko/.oh-my-zsh/custom/themes/powerlevel10k/src/ansible-examples
-    separate_git_dir: /src/ansible-examples.git
+   - name: Clone a repo with separate git directory
+    ansible.builtin.git:
+      repo: https://github.com/romkatv/powerlevel10k.git 
+      dest: /home/neko/.oh-my-zsh/custom/themes/powerlevel10k/src/ansible-examples
+      separate_git_dir: /src/ansible-examples.git
 
-- name: Clone a repo with separate git directory
-  ansible.builtin.git:
-    repo: https://digitalzen-rharris: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@github.com/digitalzen-rharris/common-config.git 
-    dest: /home/neko/repos
+  - name: Clone a repo with separate git directory
+    ansible.builtin.git:
+       repo: https://digitalzen-rharris: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@github.com/digitalzen-rharris/common-config.git 
+       dest: /home/neko/repos
     
