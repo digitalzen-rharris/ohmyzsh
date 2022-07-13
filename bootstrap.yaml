@@ -1,0 +1,28 @@
+- name: Install oh-my-zsh
+    shell: sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+    become: yes
+    become_user: neko
+    args:
+      creates: /home/neko/.oh-my-zsh/README.md
+
+  - name: Install powerlevel10k
+    command: /usr/bin/git clone --depth=1 https://github.com/romkatv/powerlevel10k.git /home/orbitron/.oh-my-zsh/custom/themes/powerlevel10k
+    become: yes
+    become_user: neko
+    args:
+      creates: /home/orbitron/.oh-my-zsh/custom/themes/powerlevel10k
+ - name: Install custom.zsh
+     copy:
+       src: /Users/orbitron/.oh-my-zsh/custom/custom.zsh
+       dest: /home/orbitron/.oh-my-zsh/custom/custom.zsh
+       owner: orbitron
+       group: orbitron
+       mode: '0644'
+
+  - name: Install p10k.zsh
+    copy:
+      src: /Users/orbitron/.p10k.zsh
+      dest: /home/orbitron/.p10k.zsh
+      owner: orbitron
+      group: orbitron
+      mode: '0644'
